@@ -48,7 +48,7 @@ def num3():
     os.system("clear")
     os.system("figlet UPDATE!")
     os.system("git clone https://github.com/Plague1234/KNIFE")
-    os.system('mv KNIFE {}/knife'.format(homeDir))
+    os.system('sudo mv KNIFE $HOME')
     time.sleep(2)
     print("Update Complete...")
     time.sleep(2)
