@@ -9,7 +9,7 @@ now = today.strftime("%B %d, %Y")
 
 os.system("clear")
 os.system("figlet KNIFE")
-print("welcome to this beta\n")
+print("Version 1.0\n")
 print("Now: ", now)
 
 
@@ -29,7 +29,7 @@ def num2():
     time.sleep(5)
     os.system("nmap -v -A " + sc)
     print("\n")
-    check = input("Scan Complete...Do you want to return? Y/N> ")
+    check = input("Scan Complete...Do you want to return to script? Y/N> ")
     if check == "Y" or check == "y":
         print("OK LET'S GO!")
         time.sleep(2)
@@ -39,13 +39,19 @@ def num2():
         time.sleep(2)
         os.system("clear")
         sys.exit()
+    else:
+        print("\n ERROR WRONG INPUT")
+        time.sleep(3)
+        sys.exit()
 
 def num3():
     os.system("clear")
     os.system("figlet UPDATE!")
-    print("No have a update :) ")
-    time.sleep(3)
-    os.system("python3 knife.py")
+    os.system("git clone https://github.com/Plague1234/KNIFE")
+    os.system('mv KNIFE {}/knife'.format(homeDir))
+    time.sleep(2)
+    print("Update Complete...")
+    time.sleep(2)
 
 
 
@@ -69,4 +75,9 @@ elif kni == "0" or kni == "00":
     print("Waiting for Exit")
     time.sleep(3)
     os.system("clear")
+    sys.exit()
+
+else:
+    print("\n ERROR WRONG INPUT")
+    time.sleep(3)
     sys.exit()
