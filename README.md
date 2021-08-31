@@ -8,7 +8,7 @@ python3 knife.py
 
 # You can update this script in this script! HOW?
 python3 knife.py
-select 3
+select the update
 Update Complete :)
 
 Happy Ending :)
