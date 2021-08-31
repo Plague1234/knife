@@ -9,7 +9,7 @@ now = today.strftime("%B %d, %Y")
 
 os.system("clear")
 os.system("figlet KNIFE")
-print("Version 1.0\n")
+print("Version 1\n")
 print("Now: ", now)
 
 
