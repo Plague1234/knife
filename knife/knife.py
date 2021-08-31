@@ -9,7 +9,7 @@ now = today.strftime("%B %d, %Y")
 
 os.system("clear")
 os.system("figlet KNIFE")
-print("Version 1.1\n")
+print("Version 1.0\n")
 print("Now: ", now)
 
 
@@ -48,7 +48,7 @@ def num3():
     os.system("clear")
     os.system("figlet UPDATE!")
     os.system("git clone https://github.com/Plague1234/KNIFE")
-    os.system('sudo mv KNIFE/knife/knife.py $HOME/KNIFE/knife')
+    os.system('sudo mv KNIFE/knife/knife.py $HOME/KNIFE/knife && sudo rm -rf KNIFE')
     time.sleep(2)
     print("Update Complete...")
     time.sleep(2)
