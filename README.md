@@ -10,4 +10,7 @@ python3 knife.py
 In script type "update or UPDATE"
 Update Complete :)
 
+# Requiment
+use python 3.x
+
 Happy Ending :)
