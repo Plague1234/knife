@@ -6,9 +6,12 @@ git clone https://github.com/Plague1234/KNIFE
 cd knife
 python3 knife.py
 
-# You can update this script in this script! HOW?
-python3 knife.py
-select the update
+# UPDATE FOR PC LINUX MACOS
+In script type "update"
+Update Complete :)
+
+# UPDATE FOR TERMUX ANDROID
+In script type "UPDATE"
 Update Complete :)
 
 Happy Ending :)
