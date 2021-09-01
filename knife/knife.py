@@ -1,14 +1,16 @@
 import os, sys, time
-from datetime import date
+from datetime import datetime
 
 #Value
-today = date.today()
+today = datetime.today()
 
 #month day year
-now = today.strftime("%B %d, %Y")
+now = today.strftime("%B %d %Y, %H:%M:%S " + " Have a nice day :)")
 
 os.system("clear")
 os.system("figlet KNIFE")
+print("Creator: Painkiller")
+print("Team: Remaster")
 print("Version 1.1\n")
 print("Now: ", now)
 
@@ -46,6 +48,32 @@ def num2():
 
 def num3():
     os.system("clear")
+    os.system("figlet Scan port and IP!")
+    print("\nexample: IP: 127.0.0.1 PORT:80\nTake a long time...")
+    ip = input("IP: ")
+    port = input("PORT: ")
+    ip2 = input("IP2: ")
+    port2 = input("PORT2: ")
+    time.sleep(4)
+    os.system("nmap -v -sn " + ip+ "/"+port + " " + ip2+ "/"+port2)
+    time.sleep(3)
+    check = input("Scan Complete...Do you want to return to script? Y/N> ")
+    if check == "Y" or check == "y":
+        print("OK LET'S GO!")
+        time.sleep(2)
+        os.system("python3 knife.py")
+    elif check == "N" or check == "n":
+        print("Good Bye :) ")
+        time.sleep(2)
+        os.system("clear")
+        sys.exit()
+    else:
+        print("\n ERROR WRONG INPUT")
+        time.sleep(3)
+        sys.exit()
+
+def update():
+    os.system("clear")
     os.system("figlet UPDATE!")
     os.system("rm -rf KNIFE")
     os.system("git clone https://github.com/Plague1234/KNIFE")
@@ -58,9 +86,10 @@ def num3():
 
 
 #MENU
-print("\n[1] Check IP")
-print("[2] Scan IP or Website")
-print("[3] Update KNIFE")
+print("\n[01] Check IP")
+print("[02] Scan IP or Website")
+print("[03] Scan IP with port")
+print("[update] New Version")
 print("[00] Exit\n")
 kni = input("sel> ")
 
@@ -72,6 +101,9 @@ elif kni == "2" or kni == "02":
 
 elif kni == "3" or kni == "03":
     num3()
+
+elif kni == "update" or kni == "UPDATE":
+    update()
 
 elif kni == "0" or kni == "00":
     print("Waiting for Exit")
