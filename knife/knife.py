@@ -83,13 +83,24 @@ def update():
     print("Update Complete...")
     time.sleep(2)
 
+def update_for_mobile():
+    os.system("clear")
+    os.system("figlet UPDATE!")
+    os.system("rm -rf KNIFE")
+    os.system("git clone https://github.com/Plague1234/KNIFE")
+    os.system('mv KNIFE/knife/knife.py $HOME/KNIFE/knife/')
+    time.sleep(5)
+    os.system("rm -rf KNIFE")
+    print("Update Complete...")
+    time.sleep(2)
 
 
 #MENU
 print("\n[01] Check IP")
 print("[02] Scan IP or Website")
 print("[03] Scan IP with port")
-print("[update] New Version")
+print("[update] For PC Linux MacOS")
+print("[UPDATE] For Termux android")
 print("[00] Exit\n")
 kni = input("sel> ")
 
@@ -102,8 +113,11 @@ elif kni == "2" or kni == "02":
 elif kni == "3" or kni == "03":
     num3()
 
-elif kni == "update" or kni == "UPDATE":
+elif kni == "update":
     update()
+
+elif kni == "UPDATE":
+    update_for_mobile()
 
 elif kni == "0" or kni == "00":
     print("Waiting for Exit")
