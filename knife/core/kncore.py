@@ -1,5 +1,7 @@
 import os, sys, time
 from datetime import datetime, date
+import urllib.request
+from subprocess import check_output as inputstream
 
 
 ################################
@@ -22,6 +24,42 @@ d88   88 `?88'  ?88d8P' ?88  d8P' ?88    88P   d8b_,dP
 
     """)
 
+def banner():
+    print("""
+        ██ ▄█▀ ███▄    █  ██▓  █████▒▓█████ 
+        ██▄█▒  ██ ▀█   █ ▓██▒▓██   ▒ ▓█   ▀ 
+        ▓███▄░ ▓██  ▀█ ██▒▒██▒▒████ ░ ▒███   
+        ▓██ █▄ ▓██▒  ▐▌██▒░██░░▓█▒  ░ ▒▓█  ▄ 
+        ▒██▒ █▄▒██░   ▓██░░██░░▒█░    ░▒████▒
+        ▒ ▒▒ ▓▒░ ▒░   ▒ ▒ ░▓   ▒ ░    ░░ ▒░ ░
+        ░ ░▒ ▒░░ ░░   ░ ▒░ ▒ ░ ░       ░ ░  ░
+        ░ ░░ ░    ░   ░ ░  ▒ ░ ░ ░       ░   
+        ░  ░            ░  ░             ░  ░                                 
+        """)
+
+backtomenu_banner = """
+  [99] Back to main menu
+  [00] Exit the Lazymux
+"""
+
+def restart_program():
+    python = sys.executable
+    os.execl(python, python, * sys.argv)
+    curdir = os.getcwd()
+
+def backtomenu_option():
+        print(backtomenu_banner)
+        backtomenu = input("knife > ")
+        
+        if backtomenu == "99":
+            restart_program()
+        elif backtomenu == "0" or backtomenu == "00":
+            sys.exit()
+        else:
+            print("\nERROR: Wrong Input")
+            time.sleep(2)
+            restart_program()
+
 #Value
 today = datetime.today()
 
@@ -32,16 +70,17 @@ now = today.strftime("%B %d %Y, %H:%M:%S " + " Have a nice day :)")
 print(time.strftime("%Y-%m-%d"))
 
 def start():
-    datetz = '2021-09-8'
+    datetz = '2023-05-7'
     expirez = time.strftime("%Y-%m-%d")
     if expirez >= datetz:
         os.system("clear")
         print("Script Expired! Please Update")
-        time.sleep(5)
+        time.sleep(3)
+        sys.exit()
 
 def check_status():
 #Status Check
-    dateted = '2021-09-8'
+    dateted = '2023-05-7'
     expireDate = time.strftime("%Y-%m-%d")
     if expireDate >= dateted:
         print("Status: Expired")
@@ -51,75 +90,96 @@ def check_status():
 #Functions
 def num1():
     os.system("clear")
-    comming_soon()
-    time.sleep(5)
-    print("Coming Soon...")
-    time.sleep(2)
-    check = input("Do you want to return to script? Y/N> ")
-    if check == "Y" or check == "y":
-        print("OK LET'S GO!")
-        time.sleep(2)
-        os.system("python3 knife.py")
-    elif check == "N" or check == "n":
-        print("Good Bye :) ")
-        time.sleep(2)
-        os.system("clear")
-        sys.exit()
-    else:
-        print("\n ERROR WRONG INPUT")
-        time.sleep(3)
-        sys.exit()
+    os.system('ip addr')
+    backtomenu_option()
 
-def num2():
-    os.system("clear")
-    os.system("figlet SCAN...")
-    print("use you brain!\n")
-    sc = input("IP/URL: ")
-    os.system("clear")
-    print("Waiting...")
-    time.sleep(5)
-    os.system("nmap -v -A " + sc)
-    print("\n")
-    check = input("Scan Complete...Do you want to return to script? Y/N> ")
-    if check == "Y" or check == "y":
-        print("OK LET'S GO!")
-        time.sleep(2)
-        os.system("python3 knife.py")
-    elif check == "N" or check == "n":
-        print("Good Bye :) ")
-        time.sleep(2)
-        os.system("clear")
-        sys.exit()
-    else:
-        print("\n ERROR WRONG INPUT")
-        time.sleep(3)
-        sys.exit()
+def vulscan():
+    ip = input("IP/URL : ")
+    os.system("nmap -sV --script=vulscan/vulscan.nse " + ip)
+    backtomenu_option()
+
+def vulners():
+    ip = input("IP/URL : ")
+    os.system("nmap --script nmap-vulners/ -sV " + ip)
+    backtomenu_option()
+
+def dos():
+    ip = input("IP/URL : ")
+    os.system("nmap --script dos " + ip)
+    backtomenu_option()
 
 def num3():
-    os.system("clear")
-    os.system("figlet Scan port and IP!")
-    print("\nexample: IP: 127.0.0.1 PORT:80\nTake a long time...")
-    ip = input("IP: ")
-    port = input("PORT: ")
-    ip2 = input("IP2: ")
-    port2 = input("PORT2: ")
-    time.sleep(4)
-    os.system("nmap -v -sn " + ip+ "/"+port + " " + ip2+ "/"+port2)
-    time.sleep(3)
-    check = input("Scan Complete...Do you want to return to script? Y/N> ")
-    if check == "Y" or check == "y":
-        print("OK LET'S GO!")
-        time.sleep(2)
-        os.system("python3 knife.py")
-    elif check == "N" or check == "n":
-        print("Good Bye :) ")
-        time.sleep(2)
-        os.system("clear")
-        sys.exit()
-    else:
-        print("\n ERROR WRONG INPUT")
-        time.sleep(3)
-        sys.exit()
+    ip = input("IP/URL : ")
+    os.system("nmap " + ip)
+    backtomenu_option()
+
+def parameter():
+    ip = input("IP/URL : ")
+    parameter = input("parameter: ")
+    os.system("nmap -p " + parameter + ip)
+    backtomenu_option()
+
+def particular():
+    print("Example: TCP&particular = 7777,973")
+    ip = input("IP/URL : ")
+    particular = input("TCP&Particular : ")
+    os.system("nmap -p " + particular + ip)
+    backtomenu_option()
+
+def range():
+    print("Example: range&parameter = 76-973")
+    ip = input("IP/URL : ")
+    parameter = input("range : ")
+    os.system("nmap -p " + parameter + ip)
+    backtomenu_option()
+
+def tport():
+    print("Example: top-ports = 10")
+    ip = input("IP/URL : ")
+    tport = input("Tport : ")
+    os.system("nmap -top-ports " + tport + ip)
+    backtomenu_option()
+
+def multihosts():
+    ip = input("IP/URL : ")
+    ip2 = input("IP/URL : ")
+    ip3 = input("IP/URL : ")
+    os.system("nmap " + ip + ip2 + ip3)
+    backtomenu_option()
+
+def subnets():
+    print(comming_soon)
+'''
+    print("Example : subnets = * ")
+    ip = input("IP/URL : ")
+    subnets = input("subnets : ")
+    os.system("nmap " + ip + .*)
+    backtomenu_option()
+'''
+
+def fullrange():
+    print("Example : full range = 127.0.0.1-255")
+    ip = input("IP/URL : ")
+    fullrange = input("fullrange : ")
+    os.system("nmap " + ip+fullrange)
+    backtomenu_option()
+
+def osa():
+    osa = input("IP/URL : ")
+    os.system('nmap -sV ' + osa)
+    backtomenu_option()
+
+def stealth():
+    ip = input("IP/URL : ")
+    os.system("nmap -sS " + ip)
+    backtomenu_option()
+
+def serveral():
+    print("Use Top ports to scan")
+    ip = input("IP/URL : ")
+    serveral = input("Tports : ")
+    os.system("nmap -top-ports " + n + tport + ip)
+    backtomenu_option()
 
 def update():
     os.system("clear")
@@ -144,7 +204,7 @@ def update():
 ##################
 def expired():
 #Expired Day
-    datet = '2021-09-8'
+    datet = '2023-05-7'
 
     ExpirationDate = time.strftime("%Y-%m-%d")
     if ExpirationDate >= datet:
