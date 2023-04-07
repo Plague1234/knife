@@ -148,7 +148,7 @@ def multihosts():
     backtomenu_option()
 
 def subnets():
-    print(comming_soon)
+    comming_soon()
 '''
     print("Example : subnets = * ")
     ip = input("IP/URL : ")

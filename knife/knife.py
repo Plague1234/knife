@@ -51,10 +51,10 @@ def main():
     elif kni.strip() == "4" or kni.strip() == "04":
         os.system('clear')
         os.system('figlet Open Ports')
-        print("\n[01] ")
-        print("[02] ")
-        print("[03] ")
-        print("[04] ")
+        print("\n[01] Parameter Scan")
+        print("[02] Particular Scan")
+        print("[03] Range Scan")
+        print("[04] Tport Scan")
         print("\n [00] Back to main menu\n")
         p = input("sel > ")
         for px in p.split():
@@ -69,9 +69,9 @@ def main():
     elif kni.strip() == "5" or kni.strip() == "05":
         os.system('clear')
         os.system('figlet Hosts')
-        print("\n[01] ")
-        print("[02] ")
-        print("[03] ")
+        print("\n[01] Multihosts Scan")
+        print("[02] Subnets Scan")
+        print("[03] Fullrange Scan")
         print("\n [00] Back to main menu\n")
         hx = input("sel > ")
         for hxx in hx.split():
