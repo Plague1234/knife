@@ -39,7 +39,7 @@ def banner():
 
 backtomenu_banner = """
   [99] Back to main menu
-  [00] Exit the Lazymux
+  [00] Exit the Knife
 """
 
 def restart_program():
@@ -100,7 +100,7 @@ def vulscan():
 
 def vulners():
     ip = input("IP/URL : ")
-    os.system("nmap --script nmap-vulners/ -sV " + ip)
+    os.system("nmap -sV --script=vulners.nse " + ip)
     backtomenu_option()
 
 def dos():
@@ -148,14 +148,11 @@ def multihosts():
     backtomenu_option()
 
 def subnets():
-    comming_soon()
-'''
     print("Example : subnets = * ")
     ip = input("IP/URL : ")
     subnets = input("subnets : ")
     os.system("nmap " + ip + .*)
     backtomenu_option()
-'''
 
 def fullrange():
     print("Example : full range = 127.0.0.1-255")
@@ -181,18 +178,28 @@ def serveral():
     os.system("nmap -top-ports " + n + tport + ip)
     backtomenu_option()
 
+def ip4():
+  p4 = input('IPv4> ')
+  os.system('nmap -A ' + p4)
+  backtomenu_option()
+
+def ip6():
+  p6 = input('IPv6> ')
+  os.sytem('nmap -A -6 ' + p6)
+  backtomenu_option()
+
 def update():
     os.system("clear")
     os.system("figlet UPDATE!")
     os.system("rm -rf KNIFE")
     os.system("git clone https://github.com/Plague1234/KNIFE")
-    os.system('mv KNIFE/knife/knife.py $HOME/KNIFE/knife/')
+    os.system('mv KNIFE/knife.py $HOME/KNIFE/')
     time.sleep(2)
-    os.system('rm -rf $HOME/KNIFE/knife/core')
+    os.system('rm -rf $HOME/KNIFE/core')
     time.sleep(2)
-    os.system('mv KNIFE/knife/core $HOME/KNIFE/knife/core')
+    os.system('mv KNIFE/core $HOME/KNIFE/core')
     time.sleep(2)
-    os.system('mv KNIFE/knife/version $HOME/KNIFE/knife/version')
+    os.system('mv KNIFE/version $HOME/KNIFE/version')
     time.sleep(5)
     os.system("rm -rf KNIFE")
     print("Update Complete...")

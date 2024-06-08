@@ -19,6 +19,8 @@ def main():
     print("[05] Scan Hosts")
     print("[06] Identify Operating Systems")
     print("[07] Stealth Scanning")
+    print("[08] IPv6 Scanning")
+    print("[09] OS detection")
     print("[UPDATE] For PC Linux MacOS")
     print("[00] Exit\n")
     kni = input("sel > ")
@@ -90,13 +92,33 @@ def main():
         os.system('clear')
         os.system('figlet Sscanning')
         print("\n[01] Stealth Scan")
-        print("[02] Scans serveral(nost commonly used)")
+        print("[02] Scans serveral(most commonly used)")
         print("\n[00] Back to main menu\n")
         ssc = input("sel > ")
         for sscx in ssc.split():
             if ssc.strip() == "01" or ssc.strip() == "1": stealth()
             elif ssc.strip() == "02" or ssc.strip() == "2": serveral()
             elif ssc.strip() == "00" or ssc.strip() == "0": restart_program()
+        else: print("\nERROR: Wrong Input");timeout(1)
+
+    elif kni.strip() == "8" or kni.strip() == "08":
+      os.system('clear')
+      os.system('figlet IPv6 Scanning')
+      vsix = input('IPv6> ')
+      os.system('nmap -6 ' + vsix)
+      backtomenu_option()
+
+    elif kni.strip() == "9" or kni.strip() == "09":
+      os.system('clear')
+      os.system('figlet OS detection')
+      print('\n[1] Scan IPv4')
+      print('[2] Scan IPv6')
+      print('\n[0] Back to Main menu\n')
+      dtc = input("sel> ")
+      for dtcx in dtc.split():
+        if dtc.strip() == "01" or dtc.strip() == "1": ip4()
+        elif dtc.strip() == "02" or dtc.strip() == "2": ip6()
+        elif dtc.strip() == "0" or dtc.strip() == "00": restart_program()
         else: print("\nERROR: Wrong Input");timeout(1)
 
     elif kni == "update" or kni == "UPDATE":
